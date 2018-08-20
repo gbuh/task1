@@ -1,6 +1,6 @@
 package com.epam.task1.app.service;
 
-import com.epam.task1.app.domain.User;
+import com.epam.task1.app.entity.User;
 
 import java.util.List;
 

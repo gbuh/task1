@@ -1,6 +1,6 @@
 package com.epam.task1.app.controller;
 
-import com.epam.task1.app.domain.User;
+import com.epam.task1.app.entity.User;
 import com.epam.task1.app.service.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,19 +30,19 @@ public class UserController {
     }
 
     @PostMapping
-    String createUser(User user) {
+    String create(User user) {
         userService.insert(user);
         return "redirect:/users";
     }
 
-    @PostMapping
-    String deleteUser(Long id) {
+    @PostMapping("/delete")
+    String delete(Long id) {
         userService.delete(id);
         return "redirect:/users";
     }
 
-    @PostMapping
-    String updateUser(Long id, User user) {
+    @PostMapping("/update")
+    String update(Long id, User user) {
         userService.update(id, user);
         return "redirect:/users";
     }

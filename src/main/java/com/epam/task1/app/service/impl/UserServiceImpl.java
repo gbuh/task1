@@ -1,11 +1,13 @@
 package com.epam.task1.app.service.impl;
 
-import com.epam.task1.app.domain.User;
-import com.epam.task1.app.domain.repository.UserRepository;
+import com.epam.task1.app.entity.User;
+import com.epam.task1.app.repository.UserRepository;
 import com.epam.task1.app.service.UserService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class UserServiceImpl implements UserService {
 
     private UserRepository userRepository;

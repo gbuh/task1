@@ -1,6 +1,6 @@
 package com.epam.task1.app.service;
 
-import com.epam.task1.app.domain.Group;
+import com.epam.task1.app.entity.Group;
 
 import java.util.List;
 
