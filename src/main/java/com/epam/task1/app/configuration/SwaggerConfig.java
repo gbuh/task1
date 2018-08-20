@@ -1,4 +1,3 @@
-/*
 package com.epam.task1.app.configuration;
 
 import org.springframework.context.annotation.Bean;
@@ -18,4 +17,3 @@ public class SwaggerConfig {
                 .paths(PathSelectors.any()).build();
     }
 }
-*/
