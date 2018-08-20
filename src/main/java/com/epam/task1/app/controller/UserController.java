@@ -29,7 +29,7 @@ public class UserController {
         return userService.getAll();
     }
 
-    @PostMapping
+    @PostMapping("/create")
     String create(User user) {
         userService.insert(user);
         return "redirect:/users";

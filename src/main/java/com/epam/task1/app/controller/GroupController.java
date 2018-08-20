@@ -1,6 +1,6 @@
 package com.epam.task1.app.controller;
 
-import com.epam.task1.app.domain.Group;
+import com.epam.task1.app.entity.Group;
 import com.epam.task1.app.service.GroupService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,20 +29,20 @@ public class GroupController {
         return groupService.getAll();
     }
 
-    @PostMapping
-    String createGroup(Group group) {
+    @PostMapping("/create")
+    String create(Group group) {
         groupService.insert(group);
         return "redirect:/groups";
     }
 
-    @PostMapping
-    String deleteGroup(Long id) {
+    @PostMapping("/delete")
+    String delete(Long id) {
         groupService.delete(id);
         return "redirect:/groups";
     }
 
-    @PostMapping
-    String updateGroup(Long id, Group group) {
+    @PostMapping("/update")
+    String update(Long id, Group group) {
         groupService.update(id, group);
         return "redirect:/groups";
     }
