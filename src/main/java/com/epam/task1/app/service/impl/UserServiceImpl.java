@@ -1,8 +1,9 @@
 package com.epam.task1.app.service.impl;
 
 import com.epam.task1.app.entity.User;
-import com.epam.task1.app.repository.UserRepository;
+import com.epam.task1.app.repository.impl.H2UserRepository;
 import com.epam.task1.app.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,7 +11,8 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
 
-    private UserRepository userRepository;
+    @Autowired
+    private H2UserRepository userRepository;
 
     @Override
     public User getById(Long id) {

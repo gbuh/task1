@@ -1,7 +1,8 @@
 package com.epam.task1.app.controller;
 
-import com.epam.task1.app.entity.Group;
+import com.epam.task1.app.entity.Groups;
 import com.epam.task1.app.service.GroupService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,25 +14,26 @@ import java.util.Collection;
 @RequestMapping("/groups")
 public class GroupController {
 
-    GroupService groupService;
+    @Autowired
+    private GroupService groupService;
 
     public GroupController(GroupService groupService) {
         this.groupService = groupService;
     }
 
     @GetMapping("/{id}")
-    Group group(Long id) {
+    Groups Groups(Long id) {
         return groupService.getById(id);
     }
 
     @GetMapping
-    Collection<Group> groups() {
+    Collection<Groups> groups() {
         return groupService.getAll();
     }
 
     @PostMapping("/create")
-    String create(Group group) {
-        groupService.insert(group);
+    String create(Groups Groups) {
+        groupService.insert(Groups);
         return "redirect:/groups";
     }
 
@@ -42,8 +44,8 @@ public class GroupController {
     }
 
     @PostMapping("/update")
-    String update(Long id, Group group) {
-        groupService.update(id, group);
+    String update(Long id, Groups Groups) {
+        groupService.update(id, Groups);
         return "redirect:/groups";
     }
 }

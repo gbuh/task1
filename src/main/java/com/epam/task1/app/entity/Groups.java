@@ -16,7 +16,7 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Group extends AbstractEntity {
+public class Groups extends AbstractEntity {
 
     private static final long serialVersionUID = 1L;
 
@@ -32,9 +32,9 @@ public class Group extends AbstractEntity {
 
     private int version;
 
-    private LocalDate createdDate;
+    private LocalDate createDate;
 
-    private LocalDate updatedDate;
+    private LocalDate updateDate;
 
     private String createdUser;
 

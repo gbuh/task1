@@ -1,18 +1,18 @@
 package com.epam.task1.app.service;
 
-import com.epam.task1.app.entity.Group;
+import com.epam.task1.app.entity.Groups;
 
 import java.util.List;
 
 public interface GroupService {
 
-    Group getById(Long id);
+    Groups getById(Long id);
 
-    List<Group> getAll();
+    List<Groups> getAll();
 
     void delete(Long id);
 
-    void update(Long id, Group group);
+    void update(Long id, Groups group);
 
-    void insert(Group group);
+    void insert(Groups group);
 }

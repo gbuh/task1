@@ -2,6 +2,7 @@ package com.epam.task1.app.controller;
 
 import com.epam.task1.app.entity.User;
 import com.epam.task1.app.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +14,8 @@ import java.util.Collection;
 @RequestMapping("/users")
 public class UserController {
 
-    UserService userService;
+    @Autowired
+    private UserService userService;
 
     public UserController(UserService userService) {
         this.userService = userService;
