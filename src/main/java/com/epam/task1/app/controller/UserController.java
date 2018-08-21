@@ -4,8 +4,11 @@ import com.epam.task1.app.entity.User;
 import com.epam.task1.app.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collection;
@@ -31,21 +34,21 @@ public class UserController {
         return userService.getAll();
     }
 
-    @PostMapping("/create")
-    String create(User user) {
+    @PostMapping(path = "/create", consumes = "application/json")
+    public String create(@RequestBody User user) {
         userService.insert(user);
         return "redirect:/users";
     }
 
     @PostMapping("/delete")
-    String delete(Long id) {
+    public String delete(@RequestParam("id") Long id) {
         userService.delete(id);
         return "redirect:/users";
     }
 
     @PostMapping("/update")
-    String update(Long id, User user) {
-        userService.update(id, user);
+    String update(User user) {
+        userService.update(user);
         return "redirect:/users";
     }
 }

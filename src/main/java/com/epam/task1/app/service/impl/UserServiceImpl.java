@@ -1,7 +1,7 @@
 package com.epam.task1.app.service.impl;
 
 import com.epam.task1.app.entity.User;
-import com.epam.task1.app.repository.impl.H2UserRepository;
+import com.epam.task1.app.repository.UserRepository;
 import com.epam.task1.app.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,11 +12,11 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    private H2UserRepository userRepository;
+    private UserRepository userRepository;
 
     @Override
     public User getById(Long id) {
-        return userRepository.getOne(id);
+        return userRepository.getById(id);
     }
 
     @Override
@@ -26,19 +26,16 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void delete(Long id) {
-        userRepository.deleteById(id);
+        userRepository.delete(id);
     }
 
     @Override
-    public void update(Long id, User user) {
-        if (userRepository.existsById(id)) {
-            // TODO????
-        } else
-            insert(user);
+    public void update(User user) {
+            userRepository.update(user);
     }
 
     @Override
     public void insert(User user) {
-        userRepository.save(user);
+        userRepository.insert(user);
     }
 }
