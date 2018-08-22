@@ -2,9 +2,10 @@ package com.epam.task1.app.controller;
 
 import com.epam.task1.app.entity.User;
 import com.epam.task1.app.service.UserService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,8 @@ import java.util.Collection;
 @RequestMapping("/users")
 public class UserController {
 
+    private final Logger log = LogManager.getLogger(UserController.class);
+
     @Autowired
     private UserService userService;
 
@@ -26,28 +29,33 @@ public class UserController {
 
     @GetMapping("/{id}")
     User user(Long id) {
+        log.info("Request to get user by id: {}", id);
         return userService.getById(id);
     }
 
     @GetMapping
     Collection<User> users() {
+        log.info("Request to get all users");
         return userService.getAll();
     }
 
     @PostMapping(path = "/create", consumes = "application/json")
     public String create(@RequestBody User user) {
+        log.info("Request to create user: {}", user);
         userService.insert(user);
         return "redirect:/users";
     }
 
     @PostMapping("/delete")
     public String delete(@RequestParam("id") Long id) {
+        log.info("Request to delete user with id: {}", id);
         userService.delete(id);
         return "redirect:/users";
     }
 
     @PostMapping("/update")
     String update(User user) {
+        log.info("Request to update user: {}", user);
         userService.update(user);
         return "redirect:/users";
     }

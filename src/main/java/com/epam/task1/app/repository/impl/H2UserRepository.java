@@ -92,7 +92,7 @@ public class H2UserRepository implements UserRepository {
     @Override
     public void insert(User user) {
         String query =
-                "INSERT INTO users VALUES (:id, :first_name, :last_name, :email, :phone_number, :version, :create_date, :update_date, :created_user, :updated_user";
+                "INSERT INTO users VALUES (:id, :first_name, :last_name, :email, :phone_number, :version, :create_date, :update_date, :created_user, :updated_user)";
         Map<String, Object> params = new HashMap<>();
         params.put("id", user.getId());
         params.put("first_name", user.getFirstName());
