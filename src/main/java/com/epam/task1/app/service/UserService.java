@@ -1,19 +1,19 @@
 package com.epam.task1.app.service;
 
-import com.epam.task1.app.entity.User;
+import com.epam.task1.app.entity.Users;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface UserService {
 
-    Optional<User> getById(Long id);
+    Optional<Users> getById(Long id);
 
-    List<User> getAll();
+    List<Users> getAll();
 
     void delete(Long id);
 
-    void update(User user);
+    void update(Users user);
 
-    void insert(User user);
+    void insert(Users user);
 }

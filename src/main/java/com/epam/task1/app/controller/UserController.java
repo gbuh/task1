@@ -1,6 +1,6 @@
 package com.epam.task1.app.controller;
 
-import com.epam.task1.app.entity.User;
+import com.epam.task1.app.entity.Users;
 import com.epam.task1.app.service.UserService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -29,19 +29,19 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    Optional<User> user(Long id) {
+    Optional<Users> user(Long id) {
         log.info("Request to get user by id: {}", id);
         return userService.getById(id);
     }
 
     @GetMapping
-    Collection<User> users() {
+    Collection<Users> users() {
         log.info("Request to get all users");
         return userService.getAll();
     }
 
     @PostMapping(path = "/create", consumes = "application/json")
-    public String create(@RequestBody User user) {
+    public String create(@RequestBody Users user) {
         log.info("Request to create user: {}", user);
         userService.insert(user);
         return "redirect:/users";
@@ -55,7 +55,7 @@ public class UserController {
     }
 
     @PostMapping("/update")
-    String update(User user) {
+    String update(Users user) {
         log.info("Request to update user: {}", user);
         userService.update(user);
         return "redirect:/users";

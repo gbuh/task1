@@ -25,7 +25,7 @@ public class Groups extends AbstractEntity {
     private String name;
 
     @ManyToMany
-    private List<User> users;
+    private List<Users> users;
 
     private int version;
 

@@ -14,7 +14,7 @@ import javax.persistence.Entity;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class User extends AbstractEntity {
+public class Users extends AbstractEntity {
 
     private static final long serialVersionUID = 1L;
 
