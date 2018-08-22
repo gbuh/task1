@@ -1,17 +1,8 @@
 package com.epam.task1.app.repository;
 
 import com.epam.task1.app.entity.User;
-import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepository {
+public interface UserRepository extends JpaRepository<User, Long> {
 
-    User getById(Long id);
-
-    List<User> findAll();
-
-    void delete(Long id);
-
-    void update(User user);
-
-    void insert(User user);
 }

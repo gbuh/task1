@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotNull;
 
 @Data
@@ -20,15 +21,11 @@ public class Groups extends AbstractEntity {
 
     private static final long serialVersionUID = 1L;
 
-/*
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-*/
     @NotNull
     private String name;
 
-    //private List<User> users;
+    @ManyToMany
+    private List<User> users;
 
     private int version;
 

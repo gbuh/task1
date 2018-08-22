@@ -1,22 +1,23 @@
 package com.epam.task1.app.service.impl;
 
 import com.epam.task1.app.entity.Groups;
-import com.epam.task1.app.repository.impl.H2GroupRepository;
+import com.epam.task1.app.repository.GroupRepository;
 import com.epam.task1.app.service.GroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class GroupServiceImpl implements GroupService {
 
     @Autowired
-    private H2GroupRepository groupRepository;
+    private GroupRepository groupRepository;
 
     @Override
-    public Groups getById(Long id) {
-        return groupRepository.getOne(id);
+    public Optional<Groups> getById(Long id) {
+        return groupRepository.findById(id);
     }
 
     @Override
@@ -30,15 +31,12 @@ public class GroupServiceImpl implements GroupService {
     }
 
     @Override
-    public void update(Long id, Groups Groups) {
-        if (groupRepository.existsById(id)) {
-            // TODO????
-        } else
-            insert(Groups);
+    public void update(Groups groups) {
+        groupRepository.save(groups);
     }
 
     @Override
-    public void insert(Groups Groups) {
-        groupRepository.save(Groups);
+    public void insert(Groups groups) {
+        groupRepository.save(groups);
     }
 }

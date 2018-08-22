@@ -3,10 +3,11 @@ package com.epam.task1.app.service;
 import com.epam.task1.app.entity.User;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserService {
 
-    User getById(Long id);
+    Optional<User> getById(Long id);
 
     List<User> getAll();
 
