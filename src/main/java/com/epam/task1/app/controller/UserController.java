@@ -5,8 +5,10 @@ import com.epam.task1.app.service.UserService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -47,14 +49,14 @@ public class UserController {
         return "redirect:/users";
     }
 
-    @PostMapping("/delete")
+    @DeleteMapping("/delete")
     public String delete(@RequestParam("id") Long id) {
         log.info("Request to delete user with id: {}", id);
         userService.delete(id);
         return "redirect:/users";
     }
 
-    @PostMapping("/update")
+    @PutMapping("/update")
     String update(Users user) {
         log.info("Request to update user: {}", user);
         userService.update(user);
