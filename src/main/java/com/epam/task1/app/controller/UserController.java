@@ -57,7 +57,7 @@ public class UserController {
     }
 
     @PutMapping("/update")
-    String update(Users user) {
+    String update(@RequestBody Users user) {
         log.info("Request to update user: {}", user);
         userService.update(user);
         return "redirect:/users";

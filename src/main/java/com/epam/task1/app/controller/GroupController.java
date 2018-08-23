@@ -57,7 +57,7 @@ public class GroupController {
     }
 
     @PutMapping("/update")
-    String update(Groups groups) {
+    String update(@RequestBody Groups groups) {
         log.info("Request to update user: {}", groups);
         groupService.update(groups);
         return "redirect:/groups";
