@@ -7,6 +7,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,7 +32,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    Optional<Users> user(Long id) {
+    Optional<Users> user(@PathVariable final Long id) {
         log.info("Request to get user by id: {}", id);
         return userService.getById(id);
     }
@@ -43,21 +44,21 @@ public class UserController {
     }
 
     @PostMapping(path = "/create", consumes = "application/json")
-    public String create(@RequestBody Users user) {
+    public String create(@RequestBody final Users user) {
         log.info("Request to create user: {}", user);
         userService.insert(user);
         return "redirect:/users";
     }
 
     @DeleteMapping("/delete")
-    public String delete(@RequestParam("id") Long id) {
+    public String delete(@RequestParam("id") final Long id) {
         log.info("Request to delete user with id: {}", id);
         userService.delete(id);
         return "redirect:/users";
     }
 
     @PutMapping("/update")
-    String update(@RequestBody Users user) {
+    String update(@RequestBody final Users user) {
         log.info("Request to update user: {}", user);
         userService.update(user);
         return "redirect:/users";
