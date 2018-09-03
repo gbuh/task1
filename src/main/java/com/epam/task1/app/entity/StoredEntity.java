@@ -1,38 +1,33 @@
 package com.epam.task1.app.entity;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDate;
 
-import javax.persistence.Entity;
+import javax.persistence.MappedSuperclass;
 
-@Data
-@EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-public class Users extends AbstractEntity {
+@MappedSuperclass
+public abstract class StoredEntity extends AbstractEntity {
 
     private static final long serialVersionUID = 1L;
-
-    private String firstName;
-
-    private String lastName;
-
-    private String email;
-
-    private String phoneNumber;
-
+    @Getter
+    @Setter
     private int version;
-
+    @Getter
+    @Setter
     private LocalDate createDate;
-
+    @Getter
+    @Setter
     private LocalDate updateDate;
-
+    @Getter
+    @Setter
     private String createdUser;
-
+    @Getter
+    @Setter
     private String updatedUser;
 }

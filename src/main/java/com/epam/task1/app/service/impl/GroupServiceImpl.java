@@ -1,8 +1,8 @@
 package com.epam.task1.app.service.impl;
 
-import com.epam.task1.app.entity.Groups;
-import com.epam.task1.app.repository.GroupRepository;
-import com.epam.task1.app.service.GroupService;
+import com.epam.task1.app.entity.Group;
+import com.epam.task1.app.repository.api.GroupRepository;
+import com.epam.task1.app.service.api.GroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,27 +16,27 @@ public class GroupServiceImpl implements GroupService {
     private GroupRepository groupRepository;
 
     @Override
-    public Optional<Groups> getById(Long id) {
+    public Optional<Group> getById(final Long id) {
         return groupRepository.findById(id);
     }
 
     @Override
-    public List<Groups> getAll() {
+    public List<Group> getAll() {
         return groupRepository.findAll();
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(final Long id) {
         groupRepository.deleteById(id);
     }
 
     @Override
-    public void update(Groups groups) {
+    public void update(final Group groups) {
         groupRepository.save(groups);
     }
 
     @Override
-    public void insert(Groups groups) {
+    public void insert(final Group groups) {
         groupRepository.save(groups);
     }
 }

@@ -5,19 +5,20 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Data
-@EqualsAndHashCode(callSuper=false)
+@EqualsAndHashCode(callSuper=true)
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Groups extends AbstractEntity {
+@Table(name="groups")
+public class Group extends AbstractEntity {
 
     private static final long serialVersionUID = 1L;
 
@@ -25,15 +26,5 @@ public class Groups extends AbstractEntity {
     private String name;
 
     @ManyToMany
-    private List<Users> users;
-
-    private int version;
-
-    private LocalDate createDate;
-
-    private LocalDate updateDate;
-
-    private String createdUser;
-
-    private String updatedUser;
+    private List<User> users;
 }

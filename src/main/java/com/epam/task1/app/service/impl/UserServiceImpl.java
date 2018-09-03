@@ -1,8 +1,8 @@
 package com.epam.task1.app.service.impl;
 
-import com.epam.task1.app.entity.Users;
-import com.epam.task1.app.repository.UserRepository;
-import com.epam.task1.app.service.UserService;
+import com.epam.task1.app.entity.User;
+import com.epam.task1.app.repository.api.UserRepository;
+import com.epam.task1.app.service.api.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,27 +16,27 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     @Override
-    public Optional<Users> getById(Long id) {
+    public Optional<User> getById(final Long id) {
         return userRepository.findById(id);
     }
 
     @Override
-    public List<Users> getAll() {
+    public List<User> getAll() {
         return userRepository.findAll();
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(final Long id) {
         userRepository.deleteById(id);
     }
 
     @Override
-    public void update(Users user) {
+    public void update(final User user) {
         userRepository.save(user);
     }
 
     @Override
-    public void insert(Users user) {
+    public void insert(final User user) {
         userRepository.save(user);
     }
 }

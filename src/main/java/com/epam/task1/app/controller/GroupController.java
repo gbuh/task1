@@ -1,12 +1,12 @@
 package com.epam.task1.app.controller;
 
-import com.epam.task1.app.entity.Groups;
-import com.epam.task1.app.service.GroupService;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import com.epam.task1.app.entity.Group;
+import com.epam.task1.app.service.api.GroupService;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,9 +19,8 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/groups")
+@Log4j2
 public class GroupController {
-
-    private final Logger log = LogManager.getLogger(UserController.class);
 
     @Autowired
     private GroupService groupService;
@@ -31,33 +30,33 @@ public class GroupController {
     }
 
     @GetMapping("/{id}")
-    Optional<Groups> groups(Long id) {
+    public Optional<Group> groups(@PathVariable final Long id) {
         log.info("Request to get group by id: {}", id);
         return groupService.getById(id);
     }
 
     @GetMapping
-    Collection<Groups> groups() {
+    public Collection<Group> groups() {
         log.info("Request to get all groups");
         return groupService.getAll();
     }
 
     @PostMapping(path = "/create", consumes = "application/json")
-    String create(@RequestBody Groups group) {
+    public String create(@RequestBody final Group group) {
         log.info("Request to create group: {}", group);
         groupService.insert(group);
         return "redirect:/groups";
     }
 
     @DeleteMapping("/delete")
-    String delete(@RequestParam("id") Long id) {
+    public String delete(@RequestParam("id") final Long id) {
         log.info("Request to delete group with id: {}", id);
         groupService.delete(id);
         return "redirect:/groups";
     }
 
     @PutMapping("/update")
-    String update(@RequestBody Groups groups) {
+    public String update(@RequestBody final Group groups) {
         log.info("Request to update user: {}", groups);
         groupService.update(groups);
         return "redirect:/groups";
