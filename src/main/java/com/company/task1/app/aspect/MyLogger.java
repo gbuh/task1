@@ -12,10 +12,10 @@ import org.springframework.context.annotation.Configuration;
 @Log4j2
 public class MyLogger {
     @Pointcut("within(com.company.task1.app.controller.*)")
-    private void loggingService() {}
+    private void loggingService() { }
 
     @Around("loggingService()")
-    public Object timeManagement(ProceedingJoinPoint joinPoint) throws Throwable {
+    public Object timeManagement(final ProceedingJoinPoint joinPoint) throws Throwable {
         log.info("Called method : " + joinPoint.getSignature());
         long startTime = System.currentTimeMillis();
         Object obj = joinPoint.proceed();
@@ -32,7 +32,7 @@ public class MyLogger {
         log.info("Called method : " + joinPoint.getSignature() + " email" + user.getEmail());
         long startTime = System.currentTimeMillis();
         Object obj = joinPoint.proceed();
-        
+
         Arrays.stream(joinPoint.getArgs()).forEach(arg -> log.info(arg));
         long timeTaken = System.currentTimeMillis() - startTime;
         log.info("Time Taken by {} is {}", joinPoint, timeTaken);
