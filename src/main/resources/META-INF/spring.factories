@@ -1,0 +1,2 @@
+#ApplicationListeners
+org.springframework.context.ApplicationListener=com.company.task1.app.configuration.EnvironmentCheckApplicationListener
