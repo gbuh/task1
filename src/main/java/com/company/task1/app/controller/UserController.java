@@ -1,5 +1,6 @@
 package com.company.task1.app.controller;
 
+import com.company.task1.app.aspect.LoggingMethod;
 import com.company.task1.app.aspect.LoggingParam;
 import com.company.task1.app.entity.User;
 import com.company.task1.app.service.api.UserService;
@@ -31,11 +32,13 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
+    @LoggingMethod("user")
     public Optional<User> user(@PathVariable @LoggingParam final Long id) {
         return userService.getById(id);
     }
 
     @GetMapping
+    @LoggingMethod("users")
     public Collection<User> users() {
         return userService.getAll();
     }
