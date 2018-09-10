@@ -1,5 +1,6 @@
 package com.company.task1.app.controller;
 
+import com.company.task1.app.aspect.LoggingParam;
 import com.company.task1.app.entity.User;
 import com.company.task1.app.service.api.UserService;
 import lombok.Setter;
@@ -30,7 +31,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public Optional<User> user(@PathVariable final Long id) {
+    public Optional<User> user(@PathVariable @LoggingParam final Long id) {
         return userService.getById(id);
     }
 
